@@ -1,0 +1,26 @@
+/* Project Euler: Problem 1: Multiples of 3 and 5
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+Find the sum of all the multiples of 3 or 5 below the provided parameter value number n. 
+
+multiplesOf3and5(1000) should return 233168.
+multiplesOf3and5(49) should return 543.
+multiplesOf3and5(19564) should return 89301183.
+*/
+
+"index.js"
+
+//SOLUTION:
+//We use a for loop to go through every natural number i from 1 to number - 1. 
+//If i is a multiple of 3 and/or 5, then i % 3 == 0 and/or i % 5 == 0. If so, we add i to or sum variable, intialized to 0.
+//When we break from the for loop, we return our sum.
+
+function multiplesOf3and5(number) {
+  var sum = 0;
+  for (var i = 1; i < number; i++) {
+    if (i % 3 == 0 || i % 5 == 0) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+
