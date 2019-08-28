@@ -1,0 +1,52 @@
+/*Project Euler: Problem 3: Largest prime factor
+The prime factors of 13195 are 5, 7, 13 and 29.
+What is the largest prime factor of the given number? */
+
+//SOLUTION
+//We create a helper function isPrime(n) to determine if n is prime.
+//For largestPrimeFactor(number), we initialize a variable largest = 0.
+//We run a for loop for the natural numbers 1 through number. If i > largest, is prime, and divides number, we assign i to largest.
+//When we break from the for loop, we return largest.
+
+//isPrime determines if the parameter number is prime
+function isPrime(number) {
+
+  if (number == 1) {
+    return false; //1 is not prime
+  }
+
+  for (var i = 2; i < number; i++) {
+    if (number % i == 0) {
+      return false; //number was divisible by a value other than 1 and itself, therefore not prime
+    }
+  }
+
+  return true; //number was not divisible by i s.t 1 < i < number, therefore prime
+}
+
+//largestPrimeFactor returns the largest prime factor of number
+function largestPrimeFactor(number) {
+  var largest = 0;
+
+  for (var i = 1; i <= number; i++) {
+    if (number % i == 0 && isPrime(i) && i > largest) {
+      largest = i;
+    }
+  }
+
+  return largest;
+}
+
+/*TESTS
+largestPrimeFactor(2) should return 2.
+Passed
+largestPrimeFactor(3) should return 3.
+Passed
+largestPrimeFactor(5) should return 5.
+Passed
+largestPrimeFactor(7) should return 7.
+Passed
+largestPrimeFactor(13195) should return 29.
+Passed
+largestPrimeFactor(600851475143) should return 6857.
+*/
