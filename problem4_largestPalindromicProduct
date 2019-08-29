@@ -1,0 +1,43 @@
+/*
+Project Euler: Problem 4: Largest palindrome product
+A palindromic number reads the same both ways. 
+The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+Find the largest palindrome made from the product of two n-digit numbers. */
+
+//WIP
+//We have a function isPalindrome(n) in development that determines if n is a palindromic number.
+//For largestPalindromeProduct(n), we initialize min and max as our minimum and maximum bounds for n-digit numbers.
+//We also initialize palindrome and product, which will be used later.
+//We have two for loops that iterate through every possible product of two n-digit numbers.
+//If product > palindrome and is a palindromic number itself, palindrome is assigned the value of product.
+//When we break from the for loop, we return palindrome.
+
+//To determine:
+//Figure out the logic of isPalindrome. I know that any 1-digit number returns true.
+//Split between even-digit numbers and odd-digit numbers.
+//How to match digits in JS?
+
+//isPalindrome(n) determines if n is a palindromic number
+function isPalindrome(n) {
+  if (n < 10 && n >= 1) {
+    return true;
+  }
+
+}
+
+function largestPalindromeProduct(n) {
+  var min = 10**(n-1) //10 ^ (n-1);
+  var max = (10 * min) - 1;
+  var palindrome = 0;
+  var product = 0;
+  
+  for (var i = min; i <= max; i++) {
+    for (var j = min; j <= max; j++ ) {
+      product = i * j;
+      if (product > palindrome && isPalindrome(product)) {
+        palindrome = product;
+      }
+    }
+  }
+
+  return palindrome;
