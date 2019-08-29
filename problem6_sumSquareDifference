@@ -1,0 +1,63 @@
+/*
+Project Euler: Problem 6: Sum square difference
+The sum of the squares of the first ten natural numbers is,
+
+12 + 22 + ... + 102 = 385
+
+The square of the sum of the first ten natural numbers is,
+
+(1 + 2 + ... + 10)2 = 552 = 3025
+
+Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 − 385 = 2640.
+Find the difference between the sum of the squares of the first n natural numbers and the square of the sum.
+
+*/
+
+/*SOLUTION:
+Create function sumOfSquares that returns the sum of the squares of the first n natural numbers.
+Create function sum_of_n that returns the sum of the first n natural numbers.
+In sumSquareDifference(n):
+  - Initialize square_of_sum as the square of sum_of_n(n).
+  - Initalize sum_of_squares as sumOfSquares(n).
+  - Initalize diff as square_of_sum - sum_of_squares.
+  - Return diff.
+*/
+
+
+function sumOfSquares(n) {
+  var sum = 0;
+
+  for (var i = 1; i <= n; i++) {
+    sum += (i * i);
+  }
+
+  return sum;
+}
+
+function sum_of_n(n) {
+  var sum = 0;
+
+  for (var i = 1; i <= n; i++) {
+    sum += i;
+  }
+
+  return sum;
+}
+
+function sumSquareDifference(n) {
+  var square_of_sum = sum_of_n(n)**2;
+  var sum_of_squares = sumOfSquares(n);
+  var diff = square_of_sum - sum_of_squares;
+  
+  return diff;
+}
+
+
+//TESTS
+/* 
+sumSquareDifference(10) should return 2640.
+Passed
+sumSquareDifference(20) should return 41230.
+Passed
+sumSquareDifference(100) should return 25164150.
+*/
